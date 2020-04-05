@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'groovy'
+}
+
+group = 'jenkins-library'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 13
+targetCompatibility = 13
+
+repositories {
+    maven {
+        url 'https://repo.jenkins-ci.org/public/'
+    }
+    maven {
+        url 'https://repo.jenkins-ci.org/releases/'
+    }
+    maven {
+        url 'https://updates.jenkins-ci.org/download/plugins/'
+    }
+    maven {
+        url 'https://jenkins-updates.cloudbees.com/download/plugins/'
+    }
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['vars', 'src']
+        }
+    }
+}
+
+dependencies {
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.11'
+    implementation group: 'org.jenkins-ci.main', name: 'jenkins-core', version: '2.45'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
